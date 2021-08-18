@@ -78,7 +78,7 @@
            
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
-                <a href="cart.html" class="cart-nav"><img src="{{ asset('frondend/img/core-img/cart.png') }}" alt=""> Cart <span>(0)</span></a>
+                <a href="{{ route('cart.index') }}" class="cart-nav"><img src="{{ asset('frondend/img/core-img/cart.png') }}" alt=""> Panier <span>({{ Cart::count() }})</span></a>
                 <a href="#" class="fav-nav"><img src="{{ asset('frondend/img/core-img/favorites.png') }}" alt=""> Favourite</a>
                 <a href="#" class="search-nav"><img src="{{ asset('frondend/img/core-img/search.png') }}" alt=""> Search</a>
             </div>
@@ -146,6 +146,47 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     </footer>
     <!-- ##### Footer Area End ##### -->
 
+
+    <!-- Button trigger modal-->
+
+  
+  <!-- Modal: modalAbandonedCart-->
+  <div class="modal fade right" id="modalAbandonedCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+      <!--Content-->
+      <div class="modal-content">
+        <!--Header-->
+        <div class="modal-header">
+          <p class="heading">Produit dans le panier
+          </p>
+  
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="white-text">&times;</span>
+          </button>
+        </div>
+  
+        <!--Body-->
+        <div class="modal-body">
+  
+          <div class="row">
+            <div class="col-3">
+              <p></p>
+              <p class="text-center"><i class="fa fa-shopping-cart fa-4x"></i></p>
+            </div>
+  
+            <div class="col-9">
+              <p>{{ session()->get('success') }}!</p>
+              <p>Consulter votre panier pour plus de details!!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+  <!-- Modal: modalAbandonedCart-->
+
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
     <script src="{{ asset('frondend/js/jquery/jquery-2.2.4.min.js') }}"></script>
     <!-- Popper js -->
@@ -156,6 +197,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="{{ asset('frondend/js/plugins.js') }}"></script>
     <!-- Active js -->
     <script src="{{ asset('frondend/js/active.js') }}"></script>
+    @if(session()->has('success'))
+  <script type="text/javascript">
+    // $( document ).ready(function() {
+        $('#modalAbandonedCart').modal('toggle')
+    // });
+    </script>
+  @endif
 
 </body>
 

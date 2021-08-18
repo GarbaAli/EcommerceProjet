@@ -72,7 +72,9 @@
                             </div>
 
                             <!-- Add to Cart Form -->
-                            <form class="cart clearfix" method="post">
+                            <form action="{{ route('cart.store') }}" class="cart clearfix" method="post">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 <div class="cart-btn d-flex mb-50">
                                     <p>Qty</p>
                                     <div class="quantity">
@@ -81,7 +83,7 @@
                                         <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
                                     </div>
                                 </div>
-                                <button type="submit" name="addtocart" value="5" class="btn amado-btn">Add to cart</button>
+                                <button type="submit" name="addtocart" value="5" class="btn amado-btn">Ajouter au panier</button>
                             </form>
 
                         </div>
