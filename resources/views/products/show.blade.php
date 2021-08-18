@@ -17,7 +17,7 @@
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">Furniture</a></li>
                                 <li class="breadcrumb-item"><a href="#">Chairs</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">{{ $product->title }}</li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ $product->slug }}</li>
                             </ol>
                         </nav>
                     </div>
