@@ -47,7 +47,9 @@ class AdminProductController extends Controller
             'image' => ['required'],
             'image' => ['required'],
         ],$messages);
-
+        // $path = $request->file('image')->store('public/product');
+        // $path1 = $request->file('image_detail')->store('public/images');
+        // DD($path);exit();
         $produit = Product::create([
             'slug' => $request->input('slug'),
             'title' => $request->input('title'),
@@ -70,6 +72,7 @@ class AdminProductController extends Controller
 
     public function update(Request $request)
     {
+        DD($request); exit();
         $messages = [
             'slug.required' => "le slug est obligatoire",
             'title.required' => "le titre est obligatoire",
@@ -89,6 +92,11 @@ class AdminProductController extends Controller
             'image' => ['required'],
             'image_detail' => ['required'],
         ],$messages);
+        // $request->image->store('public/product');
+        // $request->image_detail->store('public/product');
+        // $image=  $request->image->hashName();
+
+        // $image_detail= $request->image_detail->hashName();
         Product::where('id', $request->input('id'))
             ->update([
                 'slug' => $request->input('slug'),

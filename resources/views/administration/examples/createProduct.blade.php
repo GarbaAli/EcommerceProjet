@@ -16,8 +16,10 @@
         <div class="col-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    @if(isset($produit))
-                        <form {{ route('admin::updated.product') }} method="post">
+                    @if(isset($produit) && !empty($produit->id))
+
+
+                        <form {{ route('admin::updated.product.save') }} method="post" >
                     @else
                         <form {{ route('admin::create.product') }} method="post">
                     @endif
@@ -87,7 +89,7 @@
                     </div>
                     <div class="form-group">
                         <label for="image_detail">Deuxieme Image</label>
-                        <input type="file" value="@php
+                        <input type="file" class="form-control" value="@php
                         if (isset($produit)) {
                             echo $produit->image_detail;
                         }
