@@ -16,12 +16,13 @@
         <div class="col-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    @if(isset($produit) && !empty($produit->id))
-
-
-                        <form {{ route('admin::updated.product.save') }} method="post" >
+                    @if(isset($produit))
+                        <form  {{ route('admin::update.product.save',$produit->id) }} method="post" >
+                            @csrf
+                            @method('PATCH')
                     @else
                         <form {{ route('admin::create.product') }} method="post">
+                            @csrf
                     @endif
 
                     @if ($errors->any())
@@ -33,12 +34,6 @@
                             </ul>
                         </div>
                     @endif
-                        @csrf
-                    <input type="hidden" name="id" value="@php
-                    if (isset($produit)) {
-                        echo $produit->id;
-                    }
-                @endphp">
                     <div class="form-group">
                         <label for="slug">Slug</label>
                         <input type="text" value="@php
