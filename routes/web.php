@@ -14,10 +14,10 @@ Route::get('/home', 'HomeController@index')->name('home');
         Route::get('/product/list', 'Admin\AdminProductController@index');
         Route::get('/product/create', 'Admin\AdminProductController@createNew');
         Route::post('/product/create', 'Admin\AdminProductController@create')->name("create.product");
-        Route::get('/product/update{id}', 'Admin\AdminProductController@updateNew')->name('update.product');
-        Route::post('/product/update', 'Admin\AdminProductController@update')->name("updated.product");
-        Route::get('/product/delete{id}', 'Admin\AdminProductController@delete')->name("delete.product");
-        Route::get('/product/detail{id}', 'Admin\AdminProductController@detail')->name("view.product");
+        Route::get('/product/update/{id}', 'Admin\AdminProductController@updateNew')->name('update.product');
+        Route::post('/product/update/save', 'Admin\AdminProductController@update')->name("updated.product.save");
+        Route::get('/product/delete/{id}', 'Admin\AdminProductController@delete')->name("delete.product");
+        Route::get('/product/detail/{id}', 'Admin\AdminProductController@detail')->name("view.product");
     });
 
 
