@@ -10,7 +10,7 @@ class CartController extends Controller
 {
     public function index()
     {
-        return view('cart.index');
+        return view('cart.index');                                                
     }
 
     public function store(Request $request)
@@ -31,7 +31,11 @@ class CartController extends Controller
               return redirect()->route('product.shop')->with('success', 'Produit ajouté au panier.');
         }
 
-       
+    }
 
+    public function destroy($rowId)
+    {
+        Cart::remove($rowId);
+        return back();
     }
 }

@@ -86,7 +86,7 @@
                             <!-- Ratings & Cart -->
                             <div class="ratings-cart text-right">
                                 <div class="cart">
-                                    <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="{{ asset('frondend/img/core-img/cart.png') }}" alt=""></a>
+                                    <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Ajouter au panier"><img src="{{ asset('frondend/img/core-img/cart.png') }}" alt=""></a>
                                 </div>
                             </div>
                         </div>

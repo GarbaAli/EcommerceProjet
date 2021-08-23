@@ -12,7 +12,7 @@
                @foreach ($products as $product)
                     <!-- Single Catagory -->
                     <div class="single-products-catagory clearfix">
-                        <a href="shop.html">
+                        <a href="{{ route('product.show', $product) }}">
                             <img src="{{ asset('frondend/img/bg-img/2.jpg') }}" alt="{{ $product->image }}">
                             <!-- Hover Content -->
                             <div class="hover-content">

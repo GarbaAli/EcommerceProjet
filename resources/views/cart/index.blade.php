@@ -21,7 +21,8 @@
                                 <th></th>
                                 <th>libelle</th>
                                 <th>Prix</th>
-                                <th>Quantité</th>
+                                <th>Qte</th>
+                                <th>Retirer</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,12 +39,16 @@
                                     </td>
                                     <td class="qty">
                                         <div class="qty-btn d-flex">
-                                            <p>Qte</p>
-                                            <div class="quantity">
-                                                <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                                <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
-                                                <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                            </div>
+                                            <p>4</p>
+                                        </div>
+                                    </td>
+                                    <td class="qty">
+                                        <div class="qty-btn d-flex">
+                                            <form action="{{ route('cart.destroy', $product->rowId) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-outline-warning" type="submit">Delete<i style="color: red" class="fa fa-trush"></i></button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
@@ -59,14 +64,14 @@
             <div class="col-12 col-lg-4">
                 @if (Cart::count() > 0)
                     <div class="cart-summary">
-                        <h5>Cart Total</h5>
+                        <h5>Detail de la Commande</h5>
                         <ul class="summary-table">
-                            <li><span>subtotal:</span> <span>$140.00</span></li>
-                            <li><span>delivery:</span> <span>Free</span></li>
-                            <li><span>total:</span> <span>$140.00</span></li>
+                            <li><span>Sous-Total:</span> <span>FCFA <strong>{{ Cart::subtotal() }}</strong></span></li>
+                            <li><span>Taxe (TVA):</span> <span>{{ Cart::tax() }}</span></li>
+                            <li><span>Total:</span> <span>FCFA <strong>{{ Cart::total() }}</strong></span></li>
                         </ul>
                         <div class="cart-btn mt-100">
-                            <a href="cart.html" class="btn amado-btn w-100">Checkout</a>
+                            <a href="{{ route('checkout.index') }}" class="btn amado-btn w-100">Passer a la Caisse</a>
                         </div>
                     </div>
                 @endif
