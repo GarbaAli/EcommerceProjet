@@ -70,9 +70,8 @@ class AdminProductController extends Controller
         return view('administration.examples.createProduct',compact('produit'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, Product $id)
     {
-        DD($request); exit();
         $messages = [
             'slug.required' => "le slug est obligatoire",
             'title.required' => "le titre est obligatoire",
@@ -97,15 +96,14 @@ class AdminProductController extends Controller
         // $image=  $request->image->hashName();
 
         // $image_detail= $request->image_detail->hashName();
-        Product::where('id', $request->input('id'))
-            ->update([
+        $id->update([
                 'slug' => $request->input('slug'),
                 'title' => $request->input('title'),
                 'subtitle' => $request->input('subtitle'),
                 'description' => request('description'),
                 'price' => $request->input('price'),
                 'image' => $request->input('image'),
-                'image_detail' => $request->input('image_detail'),
+                'image_detail' => $request->input('image_detail')
         ]);
 
         return redirect('admin/product/list')->with('status','etudiant creer avec success');
