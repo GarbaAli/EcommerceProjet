@@ -33,9 +33,15 @@ class CartController extends Controller
 
     }
 
+    public function update($rowId)
+    {
+        
+    }
+
     public function destroy($rowId)
     {
         Cart::remove($rowId);
         return back();
     }
+
 }

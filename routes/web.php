@@ -21,6 +21,7 @@ Route::get('/videpanier', function () {
 });
 Route::get('/panier', 'CartController@index')->name('cart.index');
 Route::delete('/panier/{rowId}', 'CartController@destroy')->name('cart.destroy'); 
+Route::patch('/panier/{rowId}', 'CartController@update')->name('cart.update');
 
 /*Checkout */
 Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
