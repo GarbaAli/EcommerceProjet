@@ -8,15 +8,19 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2.5",
+        "php": "^8.0.7",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "hardevine/shoppingcart": "^3.0",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
+<<<<<<< HEAD
         "laravel/ui": "2.4",
         "stripe/stripe-php": "^7.94"
+=======
+        "laravel/ui": "^2.4"
+>>>>>>> 93147f5c14d19b3b1824582ed15191beff218bfc
     },
     "require-dev": {
         "facade/ignition": "^2.0",
