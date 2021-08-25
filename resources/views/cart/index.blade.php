@@ -3,9 +3,10 @@
 @section('title', 'Votre Panier')
 
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@section('extra-token')
     
-    
-        
+@endsection
 <div class="cart-table-area section-padding-100">
     <div class="container-fluid">
         <div class="row">
@@ -35,18 +36,11 @@
                                         <h5>{{ $product->model->title }}</h5>
                                     </td>
                                     <td class="price">
-                                        <span>FCFA {{ $product->model->price }}</span>
+                                        <span>FCFA {{ $product->subtotal() }}</span>
                                     </td>
                                     <td class="qty">
                                         <div class="qty-btn d-flex">
-                                            <p>Qty</p>
-                                            <div class="quantity">
-                                                <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-
-                                                <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" data-id="{{ $product->rowId }}" value="1">
-
-                                                <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                            </div>
+                                            <p>{{ $product->qty }}</p>
                                         </div>
                                     </td>
                                     <td class="qty">
@@ -89,4 +83,38 @@
 </div>
 <!-- ##### Main Content Wrapper End ##### -->
 
+@endsection
+
+@section('extra-js')
+    <script>
+        var select = document.querySelectorAll('#qty');
+        // console.log(select);
+        Array.from(select).forEach((element) => {
+            console.log(element);
+            element.addEventListener('change', function(){
+                var rowId = this.getAttribute('data-id');
+                var token = document.querySelector('mata[name="csrf-token"]').getAttribute('content');
+                fetch(
+                    `/panier/${rowId}`,
+                    {
+                        headers:{
+                            "Content-type": "application/json",
+                            "Accept": "application/json, text-plain, */*",
+                            "X-Requested-With": "XMLHttpRequest",
+                            "X-CSRF-TOKEN":token
+                        },
+                        method:'patch', 
+                        body:JSON.stringify({
+                            qty:this.value
+                        })
+                    }
+                ).then((data) => {
+                    console.log(data);
+                    location.reload();
+                }).catch((error) => {
+                    console.log(error)
+                })
+            });
+        });
+    </script>
 @endsection

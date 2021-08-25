@@ -17,6 +17,7 @@
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="{{ asset('frondend/css/core-style.css') }}">
     <link rel="stylesheet" href="{{ asset('frondend/style.css') }}">
+    @yield('extra-token')
 
 </head>
 
@@ -48,7 +49,7 @@
         <div class="mobile-nav">
             <!-- Navbar Brand -->
             <div class="amado-navbar-brand">
-                <a href="index.html"><img src="{{ asset('frondend/img/core-img/logo.png') }}" alt=""></a>
+                <a href="index.html"><img src="{{ asset('frondend/img/core-img/logo2n.png') }}" alt=""></a>
             </div>
             <!-- Navbar Toggler -->
             <div class="amado-navbar-toggler">
@@ -64,23 +65,21 @@
             </div>
             <!-- Logo -->
             <div class="logo">
-                <a href="index.html"><img src="{{ asset('frondend/img/core-img/logo.png') }}" alt=""></a>
+                <a href="index.html"><img src="{{ asset('frondend/img/core-img/logo2n.png') }}" alt=""></a>
             </div>
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
                     <li class="active"><a href="{{ url('/') }}">Accueil</a></li>
                     <li><a href="{{ route('product.shop') }}">Shop</a></li>
-                    {{-- <li><a href="#">Panier</a></li>
-                    <li><a href="#">Checkout</a></li> --}}
+                    <li><a href="#">{{ Auth::user()->email}}</a></li>
+                    {{-- <li><a href="#">Checkout</a></li> --}}
                 </ul>
             </nav>
            
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
                 <a href="{{ route('cart.index') }}" class="cart-nav"><img src="{{ asset('frondend/img/core-img/cart.png') }}" alt=""> Panier <span>({{ Cart::count() }})</span></a>
-                <a href="#" class="fav-nav"><img src="{{ asset('frondend/img/core-img/favorites.png') }}" alt=""> Favourite</a>
-                <a href="#" class="search-nav"><img src="{{ asset('frondend/img/core-img/search.png') }}" alt=""> Search</a>
             </div>
             <!-- Social Button -->
             <div class="social-info d-flex justify-content-between">
@@ -102,13 +101,6 @@
                 <div class="col-12 col-lg-4">
                     <div class="single_widget_area">
                         <!-- Logo -->
-                        <div class="footer-logo mr-50">
-                            <a href="index.html"><img src="{{ asset('frondend/img/core-img/logo2.png') }}" alt=""></a>
-                        </div>
-                        <!-- Copywrite Text -->
-                        <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                     </div>
                 </div>
                 <!-- Single Widget Area -->
@@ -121,20 +113,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                                 <div class="collapse navbar-collapse" id="footerNavContent">
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="index.html">Home</a>
+                                            <a class="nav-link" href="{{ url('/') }}">Accueil</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="shop.html">Shop</a>
+                                            <a class="nav-link" href="{{ route('product.shop') }}">Shop</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="product-details.html">Product</a>
+                                            <a class="nav-link" href="{{ route('cart.index') }}">Panier</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="cart.html">Cart</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="checkout.html">Checkout</a>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </nav>
@@ -205,6 +192,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     </script>
   @endif
 
+  @yield('extra-js')
 </body>
 
 </html>

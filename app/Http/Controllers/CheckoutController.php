@@ -7,6 +7,7 @@ use App\Product;
 use Stripe\Stripe;
 use Stripe\PaymentIntent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
@@ -55,7 +56,7 @@ class CheckoutController extends Controller
         }
 
         $order->products = $products;
-        $order->user_id = 27;
+        $order->user_id = Auth::user()->id;
         $order->prix = Cart::total();
 
         $order->save();

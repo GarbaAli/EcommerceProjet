@@ -25,7 +25,7 @@ class CartController extends Controller
         }else{
 
             $product =  Product::find($request->product_id);
-            Cart::add($product->id, $product->title, 1, $product->price)
+            Cart::add($product->id, $product->title, $request->qte, $product->price)
               ->associate('App\Product');
       
               return redirect()->route('product.shop')->with('success', 'Produit ajouté au panier.');
@@ -33,9 +33,14 @@ class CartController extends Controller
 
     }
 
-    public function update($rowId)
+    public function update(Request $request, $rowId)
     {
-        
+        $data = $request->json()->all();
+
+        Cart::update($rowId, $data['qty']);
+
+        Session::flash('success', 'La quantite du produit est passé a ' .$data['qty'].'.');
+        return response()->json(['success' => 'Cart quantity Has Been Updated']);
     }
 
     public function destroy($rowId)

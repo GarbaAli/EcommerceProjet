@@ -34,9 +34,9 @@ Route::get('/videpanier', function () {
 });
 Route::get('/panier', 'CartController@index')->name('cart.index');
 Route::delete('/panier/{rowId}', 'CartController@destroy')->name('cart.destroy'); 
-Route::patch('/panier/{rowId}', 'CartController@update')->name('cart.update');
+Route::patch('/panier/{rowId}', 'CartController@update');
 
 /*Checkout */
-Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
+Route::get('/checkout', 'CheckoutController@index')->name('checkout.index')->middleware('auth');
 Route::post('/payer','CheckoutController@store')->name('checkout.store');
 Route::get('/merci', 'CheckoutController@show')->name('checkout.merci');
