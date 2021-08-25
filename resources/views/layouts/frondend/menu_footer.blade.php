@@ -76,7 +76,7 @@
                     {{-- <li><a href="#">Checkout</a></li> --}}
                 </ul>
             </nav>
-           
+
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
                 <a href="{{ route('cart.index') }}" class="cart-nav"><img src="{{ asset('frondend/img/core-img/cart.png') }}" alt=""> Panier <span>({{ Cart::count() }})</span></a>
@@ -121,7 +121,10 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{ route('cart.index') }}">Panier</a>
                                         </li>
-                                        
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('admin::product.list') }}">Administration</a>
+                                        </li>
+
                                     </ul>
                                 </div>
                             </nav>
@@ -136,7 +139,7 @@
 
     <!-- Button trigger modal-->
 
-  
+
   <!-- Modal: modalAbandonedCart-->
   <div class="modal fade right" id="modalAbandonedCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true" data-backdrop="false">
@@ -147,21 +150,21 @@
         <div class="modal-header">
           <p class="heading">Produit dans le panier
           </p>
-  
+
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" class="white-text">&times;</span>
           </button>
         </div>
-  
+
         <!--Body-->
         <div class="modal-body">
-  
+
           <div class="row">
             <div class="col-3">
               <p></p>
               <p class="text-center"><i class="fa fa-shopping-cart fa-4x"></i></p>
             </div>
-  
+
             <div class="col-9">
               <p>{{ session()->get('success') }}!</p>
               <p>Consulter votre panier pour plus de details!!</p>
