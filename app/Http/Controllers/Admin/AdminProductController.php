@@ -17,12 +17,12 @@ class AdminProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('administration.examples.listProduct', compact('products'));
+        return view('administration.product.listProduct', compact('products'));
     }
 
     public function createNew()
     {
-        return view('administration.examples.createProduct');
+        return view('administration.product.createProduct');
     }
 
 
@@ -67,7 +67,7 @@ class AdminProductController extends Controller
     public function updateNew(int $id)
     {
         $produit = Product::find($id);
-        return view('administration.examples.createProduct',compact('produit'));
+        return view('administration.product.createProduct',compact('produit'));
     }
 
     public function update(Request $request, Product $id)
@@ -113,14 +113,14 @@ class AdminProductController extends Controller
     {
         Product::destroy($id);
         $products = Product::all();
-        return view('administration.examples.listProduct', compact('products'));
+        return view('administration.product.listProduct', compact('products'));
 
     }
 
     public function detail(int $id)
     {
         $product = product::find($id);
-        return view('administration.examples.detailProduct', compact('product'));
+        return view('administration.product.detailProduct', compact('product'));
 
     }
 
