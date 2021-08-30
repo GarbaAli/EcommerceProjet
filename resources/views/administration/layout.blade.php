@@ -37,9 +37,9 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="/admin/product/list">
+            <a class="nav-link" href="/admin/products">
               {{-- <i class="material-icons">content_paste</i> --}}
-              <p>Liste des produits</p>
+              <p>Produits</p>
             </a>
           </li>
           <li class="nav-item ">
