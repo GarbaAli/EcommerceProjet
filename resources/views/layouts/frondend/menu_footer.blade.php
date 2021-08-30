@@ -69,10 +69,16 @@
             </div>
             <!-- Amado Nav -->
             <nav class="amado-nav">
+                @php
+                    $email = '';
+                    if (!empty( Auth::user())) {
+                        $email = Auth::user()->email;
+                    }
+                @endphp
                 <ul>
                     <li class="active"><a href="{{ url('/') }}">Accueil</a></li>
                     <li><a href="{{ route('product.shop') }}">Shop</a></li>
-                    <li><a href="#">{{ Auth::user()->email}}</a></li>
+                    <li><a href="#">{{ $email}}</a></li>
                     {{-- <li><a href="#">Checkout</a></li> --}}
                 </ul>
             </nav>
@@ -122,7 +128,7 @@
                                             <a class="nav-link" href="{{ route('cart.index') }}">Panier</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('admin::product.list') }}">Administration</a>
+                                            <a class="nav-link" href="{{ route('admin::products.create') }}">Administration</a>
                                         </li>
 
                                     </ul>
