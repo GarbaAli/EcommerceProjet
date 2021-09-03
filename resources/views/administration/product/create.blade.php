@@ -23,7 +23,7 @@
     </div>
 @endif
 
-<form action="{{ route('admin::products.store') }}" method="POST">
+<form action="{{ route('admin::products.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
      <div class="row">
@@ -36,13 +36,13 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Title:</strong>
-                <input type="text" class="form-control" style="height:150px" name="title" placeholder="Enter title">
+                <input type="text" class="form-control" name="title" placeholder="Enter title">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Subtitle:</strong>
-                <input type="text" class="form-control" style="height:150px" name="subtitle" placeholder="Enter subtitle">
+                <input type="text" class="form-control" name="subtitle" placeholder="Enter subtitle">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -54,19 +54,23 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Price:</strong>
-                <input type="text" class="form-control" style="height:150px" name="price" placeholder="Enter price">
+                <input type="text" class="form-control" name="price" placeholder="Enter price">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <label for="image"><strong>Image:</strong></label>
-                <input type="file" name="image" id="image">
+                <div class="custum-file">
+                    <input type="file" id="image" class="custum-file-input" name="image">
+                    <label for="image" class="custum-file-label">Choisir une image</label>
+                </div>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <label for="image_detail">Image Detail:</label>
-                <input type="file" name="image_detail" id="image_detail">
+                <div class="custum-file">
+                    <input type="file" id="image_detail" class="custum-file-input" name="image_detail">
+                    <label for="image_detail" class="custum-file-label">Choisir la seconde image</label>
+                </div>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

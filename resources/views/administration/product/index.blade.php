@@ -7,7 +7,7 @@
                 <h2>Produit</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('admin::products.create') }}"> Creer une nouvelle catégorie</a>
+                <a class="btn btn-success" href="{{ route('admin::products.create') }}"> Creer une nouveau produit</a>
             </div>
         </div>
     </div>

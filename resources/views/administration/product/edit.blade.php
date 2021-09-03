@@ -60,14 +60,18 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Image:</strong>
-                    <input type="file" class="form-control" value="{{ $product->image }}" name="image" placeholder="Enter image">
+                    <div class="custum-file">
+                        <input type="file" id="image" class="custum-file-input" value="{{ $product->image }}" name="image">
+                        <label for="image" class="custum-file-label">Choisir une image</label>
+                    </div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Image Detail:</strong>
-                    <input type="file" class="form-control" value="{{ $product->image_detail }}" name="image_detail" placeholder="Enter image">
+                    <div class="custum-file">
+                        <input type="file" id="image_detail" class="custum-file-input" value="{{ $product->image_detail }}" name="image">
+                        <label for="image_detail" class="custum-file-label">Choisir la seconde image</label>
+                    </div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

@@ -46,13 +46,13 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>first Image:</strong>
-                <img src="{{ asset('frondend/img/bg-img/2.jpg') }}" alt="{{$product->image}}" width="100" height="100">
+                <img src="{{ asset('storage/'. $product->image) }}" alt="Pas d'image" class="img-thumbnail" width="100" height="100">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Second Image:</strong>
-                <img src="{{ asset('frondend/img/bg-img/2.jpg') }}" alt="{{$product->image}}" width="400" height="400">
+                <img src="{{ asset('storage/'. $product->image_detail) }}" alt="Pas d'image" class="img-thumbnail" width="400" height="400">
             </div>
         </div>
     </div>

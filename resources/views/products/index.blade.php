@@ -13,7 +13,7 @@
                     <!-- Single Catagory -->
                     <div class="single-products-catagory clearfix">
                         <a href="{{ route('product.show', $product) }}">
-                            <img src="{{ asset('frondend/img/bg-img/2.jpg') }}" alt="{{ $product->image }}">
+                            <img src="{{ asset('storage/'. $product->image) }}" alt="{{ $product->image }}">
                             <!-- Hover Content -->
                             <div class="hover-content">
                                 <div class="line"></div>
